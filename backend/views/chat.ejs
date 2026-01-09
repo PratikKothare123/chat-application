@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="chat-page">
+
+  <header class="top">
+    <h2><%= to %></h2>
+  </header>
+
+  <div class="messages">
+    <% messages.forEach(msg => { %>
+      <div class="bubble <%= msg.from === from ? 'me' : 'other' %>">
+        <p><%= msg.message %></p>
+
+        <small>
+          <%= new Date(msg.createdAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) %>
+        </small>
+
+        <% if (msg.from === from) { %>
+          <form method="POST" action="/delete/<%= msg._id %>">
+            <button class="del">Delete</button>
+          </form>
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+
+  <form class="send" method="POST" action="/send">
+    <input type="hidden" name="from" value="<%= from %>">
+    <input type="hidden" name="to" value="<%= to %>">
+    <input name="message" placeholder="Type message..." required>
+    <button>Send</button>
+  </form>
+
+</body>
+</html>
