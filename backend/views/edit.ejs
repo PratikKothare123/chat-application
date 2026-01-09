@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Message</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="center">
+
+  <div class="card">
+    <h2>Edit Message</h2>
+
+    <form method="POST" action="/edit/<%= message._id %>">
+      <input
+        name="message"
+        value="<%= message.message %>"
+        required
+      >
+      <button class="edit-btn">Update</button>
+    </form>
+
+    <a href="javascript:history.back()">Cancel</a>
+  </div>
+
+</body>
+</html>
