@@ -20,6 +20,12 @@ router.get("/chat", async (req, res) => {
   res.render("chat", { from, to, messages });
 });
 
+router.get("/edit/:id", async (req, res) => {
+  const message = await Message.findById(req.params.id);
+  res.render("edit", { message });
+});
+
+
 router.post("/send", async (req, res) => {
   await Message.create(req.body);
   res.redirect(`/chat?from=${req.body.from}&to=${req.body.to}`);
@@ -30,6 +36,14 @@ router.post("/delete/:id", async (req, res) => {
   res.redirect("back");
 });
 
+//Edit msg
+
+router.post("/edit/:id", async (req, res) => {
+  await Message.findByIdAndUpdate(req.params.id, {
+    message: req.body.message
+  });
+  res.redirect("back");
+});
 
   
 

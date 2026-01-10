@@ -1,39 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chat</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body class="chat-page">
+  <head>
+    <title>Chat</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="chat-page">
+    <header class="top">
+      <h2><%= to %></h2>
+    </header>
 
-  <header class="top">
-    <h2><%= to %></h2>
-  </header>
-
-  <div class="messages">
-    <% messages.forEach(msg => { %>
+    <div class="messages" id="messages">
+      <% messages.forEach(msg => { %>
       <div class="bubble <%= msg.from === from ? 'me' : 'other' %>">
         <p><%= msg.message %></p>
 
         <small>
-          <%= new Date(msg.createdAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) %>
+          <%= new Date(msg.createdAt).toLocaleTimeString([], {hour:'2-digit',
+          minute:'2-digit'}) %>
         </small>
 
         <% if (msg.from === from) { %>
-          <form method="POST" action="/delete/<%= msg._id %>">
-            <button class="del">Delete</button>
-          </form>
-        <% } %>
-      </div>
-    <% }) %>
-  </div>
+        <!-- <form method="GET" action="/edit/<%= msg._id %>" class="half">
+          <button type="submit" class="edit">Edit</button>
+        </form>
 
-  <form class="send" method="POST" action="/send">
-    <input type="hidden" name="from" value="<%= from %>">
-    <input type="hidden" name="to" value="<%= to %>">
-    <input name="message" placeholder="Type message..." required>
-    <button>Send</button>
+        <form method="POST" action="/delete/<%= msg._id %>">
+          <button class="del">Delete</button>
+        </form> -->
+        <div class="actions">
+  <form method="GET" action="/edit/<%= msg._id %>" class="half">
+    <button type="submit" class="edit">Edit</button>
   </form>
 
-</body>
+  <form method="POST" action="/delete/<%= msg._id %>" class="half">
+    <button type="submit" class="del">Delete</button>
+  </form>
+</div>
+
+        <% } %>
+      </div>
+      <% }) %>
+    </div>
+
+    <form class="send" method="POST" action="/send">
+      <input type="hidden" name="from" value="<%= from %>" />
+      <input type="hidden" name="to" value="<%= to %>" />
+      <input name="message" placeholder="Type message..." required />
+      <button>Send</button>
+    </form>
+  </body>
+  <script>
+  const messages = document.getElementById("messages");
+  messages.scrollTo({
+    top: messages.scrollHeight,
+    behavior: "smooth"
+  });
+</script>
+
 </html>
