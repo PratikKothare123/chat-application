@@ -24,7 +24,8 @@ router.post("/login", async (req, res) => {
   const ok = await bcrypt.compare(password, user.password);
   if (!ok) return res.send("Wrong password");
 
-  res.redirect(`/home?user=${user.username}`);
+  res.redirect(`/home?from=${user.username}`);
+
 });
 
 module.exports = router;

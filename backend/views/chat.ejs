@@ -3,10 +3,23 @@
   <head>
     <title>Chat</title>
     <link rel="stylesheet" href="/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
   <body class="chat-page">
-    <header class="top">
+    <!-- <header class="top">
       <h2><%= to %></h2>
+    </header> -->
+    <header class="top">
+      <a href="/home?from=<%= from %>" class="back-icon">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+
+      <h2 class="chat-user"><%= to %></h2>
     </header>
 
     <div class="messages" id="messages">
@@ -28,14 +41,14 @@
           <button class="del">Delete</button>
         </form> -->
         <div class="actions">
-  <form method="GET" action="/edit/<%= msg._id %>" class="half">
-    <button type="submit" class="edit">Edit</button>
-  </form>
+          <form method="GET" action="/edit/<%= msg._id %>" class="half">
+            <button type="submit" class="edit">Edit</button>
+          </form>
 
-  <form method="POST" action="/delete/<%= msg._id %>" class="half">
-    <button type="submit" class="del">Delete</button>
-  </form>
-</div>
+          <form method="POST" action="/delete/<%= msg._id %>" class="half">
+            <button type="submit" class="del">Delete</button>
+          </form>
+        </div>
 
         <% } %>
       </div>
@@ -50,11 +63,10 @@
     </form>
   </body>
   <script>
-  const messages = document.getElementById("messages");
-  messages.scrollTo({
-    top: messages.scrollHeight,
-    behavior: "smooth"
-  });
-</script>
-
+    const messages = document.getElementById("messages");
+    messages.scrollTo({
+      top: messages.scrollHeight,
+      behavior: "smooth",
+    });
+  </script>
 </html>

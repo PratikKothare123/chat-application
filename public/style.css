@@ -1,14 +1,24 @@
-
+/* ===============================
+   BASE RESET & GLOBAL
+================================ */
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
+html {
+  font-size: 16px; /* Desktop base */
+}
+
 body {
   margin: 0;
   background: #f4f6fb;
+  color: #111;
 }
 
+/* ===============================
+   AUTH PAGES (LOGIN / SIGNUP)
+================================ */
 .center {
   height: 100vh;
   display: flex;
@@ -28,68 +38,117 @@ body {
 .card h2 {
   margin-bottom: 20px;
   color: #4f46e5;
+  font-size: 1.5rem;
 }
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 12px;
   border-radius: 6px;
   border: 1px solid #ddd;
+  font-size: 1rem;
 }
 
 button {
   background: #4f46e5;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 button:hover {
   background: #4338ca;
 }
 
+/* ===============================
+   TOP HEADER BAR
+================================ */
 .top {
+  position: relative;
   background: #4f46e5;
   color: white;
-  padding: 15px;
-  text-align: center;
+  padding: 14px 16px;
+  height: 56px;
+  display: flex;
+  align-items: center;
 }
 
+/* Username center */
+.chat-user {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Back arrow */
+.back-icon {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.back-icon span {
+  font-size: 26px;
+}
+
+.back-icon:hover {
+  opacity: 0.8;
+}
+
+/* ===============================
+   HOME PAGE
+================================ */
 .container {
   padding: 20px;
 }
 
 .user {
   background: white;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1rem;
 }
 
+/* ===============================
+   CHAT PAGE
+================================ */
 .chat-page {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  background: #f4f6fb;
+  width: 100%;
 }
+
 
 .messages {
   flex: 1;
-  padding: 10px;
+  padding: 14px;
   overflow-y: auto;
 }
 
+/* Chat bubbles */
 .bubble {
-  max-width: 70%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  max-width: 75%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .me {
@@ -100,61 +159,38 @@ button:hover {
 
 .other {
   background: white;
+  color: #111;
 }
 
+/* Time */
 small {
-  font-size: 11px;
-  opacity: 0.7;
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  opacity: 0.75;
 }
 
-/* .del {
-  background: red;
-  margin-top: 5px;
-  padding: 4px;
-  font-size: 12px;
-} */
-
-.send {
-  display: flex;
-  padding: 10px;
-  background: white;
-}
-
-.send input {
-  flex: 1;
-}
-
-.send button {
-  width: auto;
-  margin-left: 10px;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .bubble {
-    max-width: 85%;
-  }
-}
-
-/* single line button for edit msg */
+/* ===============================
+   MESSAGE ACTION BUTTONS
+================================ */
 .actions {
   display: flex;
   gap: 8px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 .actions .half {
-  flex: 1;          /* 50% + 50% */
+  flex: 1;
 }
 
 .actions button {
   width: 100%;
-  padding: 8px 0;
+  padding: 10px 0;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 
-/* Edit Button */
+/* Edit */
 .edit {
   background: #64748b;
   color: white;
@@ -165,7 +201,7 @@ small {
   background: #475569;
 }
 
-/* Delete Button */
+/* Delete */
 .del {
   background: #ef4444;
   color: white;
@@ -174,4 +210,62 @@ small {
 
 .del:hover {
   background: #dc2626;
+}
+
+/* ===============================
+   SEND MESSAGE BAR
+================================ */
+.send {
+  display: flex;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #ddd;
+}
+
+.send input {
+  flex: 1;
+  font-size: 1rem;
+}
+
+.send button {
+  width: auto;
+  margin-left: 10px;
+  padding: 12px 16px;
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+================================ */
+@media (max-width: 600px) {
+
+  html {
+    font-size: 18px; /* 🔥 Mobile text boost */
+  }
+
+  .chat-user {
+    font-size: 1.3rem;
+  }
+  .chat-page {
+    max-width: 520px;   /* phone width */
+    margin: 0 auto;
+  }
+
+
+  .bubble {
+    max-width: 90%;
+    padding: 14px;
+  }
+
+  .actions button {
+    font-size: 0.95rem;
+    padding: 12px 0;
+  }
+
+  .send input {
+    font-size: 1rem;
+  }
+
+  .send button {
+    font-size: 1rem;
+  }
 }

@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Home</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+  <head>
+    <title>Home</title>
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <header class="top">
-    <h2>Hello, <%= me %></h2>
-  </header>
+  </head>
+  <body>
+    <header class="top">
+      <h2>Hello, <%= me || "Guest" %></h2></header>
 
-  <div class="container">
-    <h3>All Users</h3>
+    <div class="container">
+      <h3>All Users</h3>
 
-    <% users.forEach(user => { %>
-      <% if (user.username !== me) { %>
-        <div class="user">
-          <span><%= user.username %></span>
-          <a href="/chat?from=<%= me %>&to=<%= user.username %>">
-            <button>Start Chat</button>
-          </a>
-        </div>
-      <% } %>
-    <% }) %>
-  </div>
-
-</body>
+      <% users.forEach(user => { %> <% if (user.username !== me) { %>
+      <div class="user">
+        <span><%= user.username %></span>
+        <a href="/chat?from=<%= me %>&to=<%= user.username %>">
+          <button>Start Chat</button>
+        </a>
+      </div>
+      <% } %> <% }) %>
+    </div>
+  </body>
 </html>
