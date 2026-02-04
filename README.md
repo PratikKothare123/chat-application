@@ -54,26 +54,28 @@ It supports sending, editing, and deleting messages with a **clean UI and respon
 
 ### 1️⃣ Clone the repository
 bash
-git clone https://github.com/PratikKothare123/chat-application.git
-cd chat-application
+<br>
+```git clone https://github.com/PratikKothare123/chat-application.git```
+<br>
+`cd chat-application`
 
 2️⃣ Install dependencies
-npm install
+``npm install``
 
 3️⃣ Create .env file
-MONGO_URI=your_mongodb_atlas_connection_string
-PORT=5000
+```MONGO_URI=your_mongodb_atlas_connection_string```
+`PORT=5000`
 
 4️⃣ Start the server
-npm start
+`npm start`
 
 5️⃣ Open in browser
-http://localhost:5000
+`http://localhost:5000`
 
 🌐 Deploy Link
 
 🔗 Live Demo:
-(https://chat-application-q5ya.onrender.com)
+https://chat-application-q5ya.onrender.com
 
 📁 Project Structure (Simplified)
 
